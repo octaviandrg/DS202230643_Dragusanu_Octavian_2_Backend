@@ -1,0 +1,57 @@
+version: '3'
+
+networks:
+  sub-net1:
+    external: true
+
+services:
+  db:
+    image: postgres
+    healthcheck:
+      test: ["CMD", "pg_isready", "-q", "-d", "postgres", "-U", "postgres"]
+      timeout: 45s
+      interval: 10s
+      retries: 5
+    restart: always
+    networks:
+      sub-net1:
+        ipv4_address: 172.31.38.153
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_DB=online-energy-utility-platform
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - "5432:5432"
+    container_name: tavi-db
+
+  be:
+    image: backend
+    restart: always
+    networks:
+      sub-net1:
+        ipv4_address: 172.31.38.154
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_IP=db
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=123
+      - DB_DBNAME=online-energy-utility-platform
+    depends_on:
+      db:
+        condition: service_healthy
+  fe:
+    image: frontend
+    restart: always
+    networks:
+      sub-net1:
+        ipv4_address: 172.31.38.155
+    ports:
+      - "3000:3000"
+    container_name: frontend
+    depends_on:
+      be:
+        condition: service_started
+    command: npm start
