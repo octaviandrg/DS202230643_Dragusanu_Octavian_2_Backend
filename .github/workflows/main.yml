@@ -22,4 +22,4 @@ jobs:
 
       - run: |
           docker build . -t containerregistrynameoctaviandragusanu30643.azurecr.io/appdb:${{ github.sha }}
-          docker push yourACRname.azurecr.io/appdb:${{ github.sha }}
+          docker push containerregistrynameoctaviandragusanu30643.azurecr.io/appdb:${{ github.sha }}
