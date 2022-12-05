@@ -17,8 +17,8 @@ jobs:
       - uses: azure/docker-login@v1
         with:
           login-server: containerregistrynameoctaviandragusanu30643.azurecr.io
-          username: ${{ ACR.ACR_USERNAME }}
-          password: ${{ ACR.ACR_PASSWORD }}
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
 
       - run: |
           docker build . -t containerregistrynameoctaviandragusanu30643.azurecr.io/appdb:${{ github.sha }}
