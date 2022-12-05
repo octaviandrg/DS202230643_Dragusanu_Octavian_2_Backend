@@ -29,7 +29,7 @@ public class ConsumptionService {
     private DeviceRepository deviceRepository;
 
     public List<ConsumptionDto> getAllConsumptions(){
-        consumptionRepository.deleteAll();
+        //consumptionRepository.deleteAll();
         return consumptionRepository.findAll().stream().map(ConsumptionBuilder::toConsumptionDto).collect(Collectors.toList());
     }
 
