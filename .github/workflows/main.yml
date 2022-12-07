@@ -15,9 +15,9 @@ jobs:
       - uses: actions/checkout@v2
       - uses: azure/docker-login@v1
         with:
-           login-server: ${{ secrets.ACR_ENDPOINT }}
-           username: ${{ secrets.ACR_USERNAME }}
-           password: ${{ secrets.ACR_PASSWORD }}
+           login-server: containerregistrynameoctaviandragusanu30643.azurecr.io
+           username: containerregistrynameoctaviandragusanu30643
+           password: L2EWdkh1dwQYDoH5L=xu49LDTD0WKwwB
       - run: |
-          docker build . -t ${{ secrets.ACR_ENDPOINT }}/proiectsd:${{ github.sha }}
-          docker push ${{ secrets.ACR_ENDPOINT }}/proiectsd:${{ github.sha }}
+          docker build . -t ${{ containerregistrynameoctaviandragusanu30643.azurecr.io }}/proiectsd:${{ github.sha }}
+          docker push ${{ containerregistrynameoctaviandragusanu30643.azurecr.io }}/proiectsd:${{ github.sha }}
