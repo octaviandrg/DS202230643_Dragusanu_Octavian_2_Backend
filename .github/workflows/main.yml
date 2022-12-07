@@ -2,9 +2,9 @@ name: Build a Docker image and Push it to ACR
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
   workflow_dispatch:
 
@@ -19,5 +19,5 @@ jobs:
            username: ${{ secrets.ACR_USERNAME }}
            password: ${{ secrets.ACR_PASSWORD }}
       - run: |
-          docker build . -t ${{ secrets.ACR_ENDPOINT }}/knowledgefactory:${{ github.sha }}
-          docker push ${{ secrets.ACR_ENDPOINT }}/knowledgefactory:${{ github.sha }}
+          docker build . -t ${{ secrets.ACR_ENDPOINT }}/proiectsd:${{ github.sha }}
+          docker push ${{ secrets.ACR_ENDPOINT }}/proiectsd:${{ github.sha }}
