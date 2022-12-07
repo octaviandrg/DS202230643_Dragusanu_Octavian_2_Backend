@@ -19,5 +19,5 @@ jobs:
            username: containerregistrynameoctaviandragusanu30643
            password: L2EWdkh1dwQYDoH5L=xu49LDTD0WKwwB
       - run: |
-          docker build . -t containerregistrynameoctaviandragusanu30643.azurecr.io /proiectsd:${{ github.sha }}
-          docker push containerregistrynameoctaviandragusanu30643.azurecr.io /proiectsd:${{ github.sha }}
+          docker build . -t containerregistrynameoctaviandragusanu30643.azurecr.io/proiectsd:${{ github.sha }}
+          docker push containerregistrynameoctaviandragusanu30643.azurecr.io/proiectsd:${{ github.sha }}
